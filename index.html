@@ -917,6 +917,140 @@
                 color: #94a3b8;
             }
 
+            /* 순차 애니메이션 스타일 */
+            .process-step,
+            .precision-step,
+            .code-block,
+            .improvement-notes,
+            .timeline-item,
+            .arch-layer,
+            .feature-card,
+            .company-feature-card {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            .process-step.animate-in,
+            .precision-step.animate-in,
+            .code-block.animate-in,
+            .improvement-notes.animate-in,
+            .timeline-item.animate-in,
+            .arch-layer.animate-in,
+            .feature-card.animate-in,
+            .company-feature-card.animate-in {
+                animation: slideUpFadeIn 0.6s ease-out forwards;
+            }
+
+            @keyframes slideUpFadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* hover 자동 재생을 위한 auto-hover 클래스 */
+            .process-step.auto-hover {
+                background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+                transform: translateY(-10px);
+                box-shadow: 0 15px 50px rgba(59, 130, 246, 0.2);
+            }
+
+            .process-step.auto-hover .step-number {
+                transform: scale(1.15) rotate(360deg);
+                box-shadow:
+                    0 15px 40px rgba(59, 130, 246, 0.6),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+
+            .process-step.auto-hover h3 {
+                color: #3b82f6;
+            }
+
+            .precision-step.auto-hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 15px 50px currentColor;
+            }
+
+            .precision-step:nth-child(1).auto-hover {
+                box-shadow: 0 15px 50px rgba(239, 68, 68, 0.4);
+            }
+
+            .precision-step:nth-child(2).auto-hover {
+                box-shadow: 0 15px 50px rgba(245, 158, 11, 0.4);
+            }
+
+            .precision-step:nth-child(3).auto-hover {
+                box-shadow: 0 15px 50px rgba(59, 130, 246, 0.4);
+            }
+
+            .precision-step:nth-child(4).auto-hover {
+                box-shadow: 0 15px 50px rgba(34, 197, 94, 0.4);
+            }
+
+            .precision-step.auto-hover .version-badge {
+                transform: scale(1.15) rotate(-5deg);
+            }
+
+            .precision-step.auto-hover img {
+                transform: scale(1.05);
+            }
+
+            .feature-card.auto-hover {
+                transform: translateY(-8px) scale(1.02);
+                border-color: rgba(59, 130, 246, 0.4);
+                box-shadow:
+                    0 20px 60px rgba(59, 130, 246, 0.3),
+                    0 0 0 1px rgba(59, 130, 246, 0.2);
+                background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+            }
+
+            .feature-card.auto-hover::before {
+                opacity: 1;
+            }
+
+            .company-feature-card.auto-hover .icon {
+                transform: scale(1.2) rotate(10deg);
+            }
+
+            .company-feature-card.auto-hover::after {
+                width: 300px;
+                height: 300px;
+            }
+
+            .arch-layer.auto-hover {
+                transform: translateY(-5px);
+                border-color: currentColor;
+                box-shadow:
+                    0 20px 60px rgba(0, 0, 0, 0.4),
+                    0 0 0 1px currentColor;
+            }
+
+            .arch-layer.auto-hover::before {
+                opacity: 0.3;
+            }
+
+            .lineup-list li.auto-hover {
+                background: linear-gradient(90deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.15));
+                transform: translateX(15px);
+                color: #fff;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+            }
+
+            .lineup-list li.auto-hover::after {
+                opacity: 1;
+                right: 1rem;
+            }
+
+            .skill-tag.auto-hover {
+                background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.4));
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            }
+
             /* AI 정확도 향상 스타일 */
             .precision-step {
                 cursor: pointer;
@@ -1259,23 +1393,11 @@
 
             /* 슬라이드 번호 표시 */
             .slide::after {
-                content: attr(data-slide-number);
-                position: fixed;
-                bottom: 1.5rem;
-                right: 2rem;
-                font-size: 0.9rem;
-                color: rgba(148, 163, 184, 0.6);
-                font-weight: 500;
-                z-index: 100;
-                padding: 0.5rem 1rem;
-                background: rgba(30, 41, 59, 0.5);
-                backdrop-filter: blur(10px);
-                border-radius: 0.5rem;
-                border: 1px solid rgba(148, 163, 184, 0.1);
+                content: none;
             }
 
             .slide.slide-title::after {
-                content: '';
+                content: none;
             }
 
             /* 반응형 */
@@ -1408,7 +1530,7 @@
                     AI 기반 페트병 자원순환 시스템
                 </div>
                 <div class="subtitle" style="font-size: 1.3rem; margin-bottom: 2rem">주식회사 리한</div>
-                <div class="start-hint" style="font-size: 1rem; margin-top: 4rem">클릭하여 시작하세요</div>
+                <div class="start-hint" style="font-size: 1rem; margin-top: 4rem">Touch to Start</div>
             </div>
 
             <!-- 슬라이드 2: 목차 -->
@@ -1843,8 +1965,8 @@
                                     >
                                         1st
                                     </div>
-                                    <h3 style="font-size: 1rem; color: #22c55e; margin-bottom: 0.3rem">최종 모델</h3>
-                                    <p style="color: #cbd5e1; font-size: 0.85rem">최고 정확도</p>
+                                    <h3 style="font-size: 1rem; color: #22c55e; margin-bottom: 0.3rem">개선 3단계</h3>
+                                    <p style="color: #cbd5e1; font-size: 0.85rem">현재 최고 정확도</p>
                                 </div>
                                 <div
                                     style="
@@ -2192,11 +2314,142 @@ void runMotor1() {
                     if (i < index) {
                         slide.classList.add('prev');
                     }
+                    // 애니메이션 클래스도 초기화
+                    const animElements = slide.querySelectorAll(
+                        '.process-step, .precision-step, .code-block, .improvement-notes, .timeline-item, .arch-layer, .feature-card, .company-feature-card',
+                    );
+                    animElements.forEach((el) => el.classList.remove('animate-in'));
                 });
 
                 // 현재 슬라이드 활성화
                 slides[index].classList.add('active');
                 currentSlide = index;
+
+                // 순차 애니메이션 트리거
+                triggerSequentialAnimation(slides[index]);
+            }
+
+            function triggerSequentialAnimation(slide) {
+                const processSteps = slide.querySelectorAll('.process-step');
+                const precisionSteps = slide.querySelectorAll('.precision-step');
+                const codeBlocks = slide.querySelectorAll('.code-block');
+                const improvementNotes = slide.querySelectorAll('.improvement-notes');
+                const timelineItems = slide.querySelectorAll('.timeline-item');
+                const archLayers = slide.querySelectorAll('.arch-layer');
+                const featureCards = slide.querySelectorAll('.feature-card');
+                const companyCards = slide.querySelectorAll('.company-feature-card');
+                const lineupItems = slide.querySelectorAll('.lineup-list li');
+                const skillTags = slide.querySelectorAll('.skill-tag');
+
+                // 프로세스 단계 순차 애니메이션 (1->2->3->4->5)
+                if (processSteps.length > 0) {
+                    processSteps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.classList.add('animate-in');
+                            // 나타난 후 hover 효과 자동 재생
+                            setTimeout(() => {
+                                step.classList.add('auto-hover');
+                                setTimeout(() => {
+                                    step.classList.remove('auto-hover');
+                                }, 800); // hover 효과 800ms 지속
+                            }, 600); // 나타난 후 600ms 후에 hover
+                        }, index * 200); // 각 단계마다 200ms 간격
+                    });
+                }
+
+                // AI 정확도 카드 순차 애니메이션 (4th->3rd->2nd->1st)
+                if (precisionSteps.length > 0) {
+                    precisionSteps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.classList.add('animate-in');
+                            // 나타난 후 hover 효과 자동 재생
+                            setTimeout(() => {
+                                step.classList.add('auto-hover');
+                                setTimeout(() => {
+                                    step.classList.remove('auto-hover');
+                                }, 800);
+                            }, 600);
+                        }, index * 300); // 각 카드마다 300ms 간격
+                    });
+                }
+
+                // 코드 블록 순차 애니메이션 (Before -> After)
+                if (codeBlocks.length > 0) {
+                    codeBlocks.forEach((block, index) => {
+                        setTimeout(() => {
+                            block.classList.add('animate-in');
+                        }, index * 400); // 각 코드 블록마다 400ms 간격
+                    });
+                }
+
+                // 개선사항 메모 애니메이션 (코드 블록 후에 표시)
+                if (improvementNotes.length > 0) {
+                    improvementNotes.forEach((note, index) => {
+                        setTimeout(
+                            () => {
+                                note.classList.add('animate-in');
+                            },
+                            codeBlocks.length * 400 + 200,
+                        ); // 코드 블록 이후에 표시
+                    });
+                }
+
+                // 타임라인 아이템 순차 애니메이션
+                if (timelineItems.length > 0) {
+                    timelineItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-in');
+                        }, index * 300);
+                    });
+                }
+
+                // 아키텍처 레이어 순차 애니메이션 (위에서 아래로)
+                if (archLayers.length > 0) {
+                    archLayers.forEach((layer, index) => {
+                        setTimeout(() => {
+                            layer.classList.add('animate-in');
+                            // 나타난 후 hover 효과 자동 재생
+                            setTimeout(() => {
+                                layer.classList.add('auto-hover');
+                                setTimeout(() => {
+                                    layer.classList.remove('auto-hover');
+                                }, 800);
+                            }, 600);
+                        }, index * 300);
+                    });
+                }
+
+                // 기능 카드 순차 애니메이션
+                if (featureCards.length > 0) {
+                    featureCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate-in');
+                            // 나타난 후 hover 효과 자동 재생
+                            setTimeout(() => {
+                                card.classList.add('auto-hover');
+                                setTimeout(() => {
+                                    card.classList.remove('auto-hover');
+                                }, 800);
+                            }, 600);
+                        }, index * 200);
+                    });
+                }
+
+                // 회사 카드 순차 애니메이션
+                if (companyCards.length > 0) {
+                    companyCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate-in');
+                            // 나타난 후 hover 효과 자동 재생
+                            setTimeout(() => {
+                                card.classList.add('auto-hover');
+                                setTimeout(() => {
+                                    card.classList.remove('auto-hover');
+                                }, 800);
+                            }, 600);
+                        }, index * 250);
+                    });
+                }
             }
 
             function nextSlide() {
